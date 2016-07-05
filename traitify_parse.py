@@ -24,8 +24,8 @@ for row in traitify_data:
         d.update(attributes)
 
         with open('traitify.csv', 'a') as myfile:
-            writer = csv.DictWriter(myfile, keyList)    #fieldnames
-            if success_counter == 0
+            writer = csv.DictWriter(myfile, keyList)
+            if success_counter == 0:
                 writer.writeheader()
             writer.writerow(d)
 
