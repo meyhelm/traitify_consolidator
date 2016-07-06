@@ -1,4 +1,5 @@
 # entire thing
+import csv
 success_counter = 0
 skip_counter = 0
 for row in traitify_data:
