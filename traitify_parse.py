@@ -16,16 +16,16 @@ for row in traitify_data:
         d['Personality Type 1'] = row['personality']['personality_blend']['personality_type_1']['name']
         d['Personality Type 2'] = row['personality']['personality_blend']['personality_type_2']['name']
         blend = row['personality']['personality_blend']['name']
-        d['Blend'] = '/'.join(sorted(blend.split('/')))
+        d['Blend'] = '/'.join(sorted(blend.split('/'))) #combine type 'A/B' with 'B/A'
 
 
         attributes = {}
         for i in range(0,56):
             k = row['personality']['personality_traits'][i]['personality_trait']['name']
-            v = (str(row['personality']['personality_traits'][i]['score']))
+            v = (str(row['personality']['personality_traits'][i]['score']/100)) #normalize score
             attributes[k] = v
 
-        d.update(attributes)
+        d.update(attributes) #combine both dicts together
 
         with open('traitify.csv', 'a') as myfile:
             writer = csv.DictWriter(myfile, keyList)
