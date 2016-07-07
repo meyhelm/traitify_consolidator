@@ -5,7 +5,7 @@ skip_counter = 0
 for row in traitify_data:
     try:
 
-        keys = ["Email", "Personality Type 1", "Personality Type 2"]
+        keys = ["Email", "Personality Type 1", "Personality Type 2", "Blend"]
         traits = []
         for x in range(0,56):
             traits.append(traitify_data[0]['personality']['personality_traits'][x]['personality_trait']['name'])
@@ -15,6 +15,9 @@ for row in traitify_data:
         d['Email'] = row['email']
         d['Personality Type 1'] = row['personality']['personality_blend']['personality_type_1']['name']
         d['Personality Type 2'] = row['personality']['personality_blend']['personality_type_2']['name']
+        blend = row['personality']['personality_blend']['name']
+        d['Blend'] = '/'.join(sorted(blend.split('/')))
+
 
         attributes = {}
         for i in range(0,56):
