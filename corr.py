@@ -1,6 +1,6 @@
 import pandas as pd
 
-my_data = pd.read_csv('/Users/meyhel01/Documents/traitifypls.csv', sep=',', engine='c')
+my_data = pd.read_csv('Users/meyhel01/Documents/Traitify Excel & Charts/traitifydata.csv'', sep=',', engine='c')
 
 labels=[]
 for i in sorted(traits):
