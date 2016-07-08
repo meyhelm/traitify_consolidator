@@ -13,3 +13,7 @@ personalities = my_data['Blend']
 letter_counts = Counter(personalities)
 df = pd.DataFrame.from_dict(letter_counts, orient='index')
 df.plot(kind='bar')
+
+ax = df.plot(kind='bar')  # s is an instance of Series
+fig = ax.get_figure()
+fig.savefig('/Users/meyhel01/Documents/histogram.pdf',bbox_inches='tight')
