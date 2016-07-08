@@ -1,14 +1,14 @@
 import numpy as np
 from scipy.cluster.vq import kmeans,vq
-from scipy.spatial.distance import cdist
+from scipy.spatial.distance import cdist, pdist
 import matplotlib.pyplot as plt
 import csv
 
-data = []
+X = []
 with open('/Users/meyhel01/Documents/Traitify Excel & Charts/traitifyNum.csv', 'rU') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
-        data.append(', '.join(row))
+        X.append(', '.join(row))
 
 # Cluster data into K = 10....100 clusters #
 K = range(1,100)
@@ -18,14 +18,17 @@ centroids = [cent for (cent,var) in KM]   # cluster centroids
 D_k = [cdist(X, cent, 'euclidean') for cent in centroids]
 cIdx = [np.argmin(D,axis=1) for D in D_k]
 dist = [np.min(D,axis=1) for D in D_k]
-avgWithinSS = [sum(d)/X.shape[0] for d in dist]
+
+tot_withinss = [sum(d**2) for d in dist]  # Total within-cluster sum of squares
+totss = sum(pdist(X)**2)/X.shape[0]       # The total sum of squares
+betweenss = totss - tot_withinss          # The between-cluster sum of squares
 
 # Plot elbow curve #
 kIdx = 9
 fig = plt.figure()
-ax = fig.add_subplot(111) 
-ax.plot(K, avgWithinSS/totss*100, 'b*-')
-ax.plot(K[kIdx], avgWithinSS[kIdx]/totss*100, marker='o', markersize=12,
+ax = fig.add_subplot(111)
+ax.plot(K, betweenss/totss*100, 'b*-')
+ax.plot(K[kIdx], betweenss[kIdx]/totss*100, marker='o', markersize=12,
     markeredgewidth=2, markeredgecolor='r', markerfacecolor='None')
 ax.set_ylim((0,100))
 plt.grid(True)
