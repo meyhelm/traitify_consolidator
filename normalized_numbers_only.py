@@ -16,11 +16,9 @@ for row in traitify_data:
             v = (str(row['personality']['personality_traits'][i]['score']/100)) #normalize score
             attributes[k] = v
 
-        d.update(attributes) #combine both dicts together
-
         with open('traitifyNum.csv', 'a') as myfile:
             writer = csv.DictWriter(myfile, keyList)
-            writer.writerow(d)
+            writer.writerow(attributes)
 
         success_counter = success_counter + 1
 
