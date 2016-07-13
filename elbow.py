@@ -6,9 +6,9 @@ import csv
 import pandas as pd
 
 
-X = pd.read_csv('/Users/meyhel01/Documents/Traitify Excel & Charts/traitifyNum.csv', sep=',', engine='c')
+X = pd.read_csv('/Users/meyhel01/Documents/Traitify Excel/traitifyNum.csv', sep=',', engine='c')
 
-''' with open('/Users/meyhel01/Documents/Traitify Excel & Charts/traitifyNum.csv', 'rU') as csvfile:
+''' with open('/Users/meyhel01/Documents/Traitify Excel/traitifyNum.csv', 'rU') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
             for row in spamreader:
                 X.append(', '.join(row)) '''
