@@ -3,22 +3,20 @@ from sklearn.cluster import AgglomerativeClustering
 import numpy as np
 import csv
 
-data = []
-with open('/Users/meyhel01/Documents/Traitify Excel & Charts/traitifyNum_withTraits.csv', 'rU') as csvfile:
+Q = pd.read_csv('/Users/meyhel01/Documents/Traitify Excel/traitifyNum_withTraits.csv', sep=',', engine='c')
+clust = AgglomerativeClustering(n_clusters=10)
+clusters = aclust.fit(Q)
+labels = clusters.labels_
+np.savetxt('/Users/meyhel01/Documents/Traitify Excel/numLabels.txt', labels)
+
+
+'''data = []
+with open('/Users/meyhel01/Documents/Traitify Excel/traitifyNum_withTraits.csv', 'rU') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
         data.append(', '.join(row))
-
-Q = pd.read_csv('/Users/meyhel01/Documents/Traitify Excel & Charts/traitifyNum_withTraits.csv', sep=',', engine='c')
-
-aclust = AgglomerativeClustering(n_clusters=10)
-aclusters = aclust.fit(Q)
-alabels = aclusters.labels_
-length = len(alabels)
-
 my_dict = {}
 count_dict = {}
-
 sumArray = [0]*length
 for i in alabels:
     cluster = alabels[i]
@@ -31,4 +29,4 @@ for i in alabels:
         count_dict[cluster] = 0
 
 for label in my_dict:
-    my_dict[label]/count_dict[label]
+    my_dict[label]/count_dict[label]'''
