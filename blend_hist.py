@@ -6,7 +6,7 @@ import pandas as pd
 from collections import Counter
 
 print 'uploading data'
-my_data = pd.read_csv('/Users/meyhel01/Documents/traitifypls.csv', sep=',', engine='c')
+my_data = pd.read_csv('/Users/meyhel01/Documents/traitifydata.csv', sep=',', engine='c')
 
 personalities = my_data['Blend']
 
